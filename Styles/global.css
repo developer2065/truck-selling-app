@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --font-vazir: "Vazirmatn", sans-serif;
+}
+
+body {
+  font-family: var(--font-vazir);
+  background-color: var(--light);
+}
+
+
+:root {
+  --primary: #020c6a;
+  --accent: #f99a10;  
+  --light: #ffffff;   
+}

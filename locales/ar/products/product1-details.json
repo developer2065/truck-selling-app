@@ -1,0 +1,23 @@
+ {
+    "title": "مقطورة التفريغ",
+    "banner": "/images/icon1.png",
+    "motivation": "قوة في نقل الحمولة الثقيلة",
+    "infoImage": "/images/image1.webp",
+    "infoTitle": "أداء عالي في نقل المواد الإنشائية",
+    "infoText": "تم تصميم مقطورة التفريغ خصيصًا لنقل المواد الإنشائية والحمولات الثقيلة.",
+    "items": [
+      {
+        "slug": " a مقطورة التفريغ",
+        "name": "النموذج A",
+        "shortDesc": "مثالي لمشاريع البناء",
+        "image": "/images/dump-trailer-a.webp"
+      },
+      {
+        "slug": " b مقطورة التفريغ",
+        "name": "النموذج B",
+        "shortDesc": "مناسب لنقل المواد الثقيلة",
+        "image": "/images/dump-trailer-b.webp"
+      }
+    ]
+  }
+

@@ -1,0 +1,199 @@
+
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 70vh; 
+  margin-top: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* فلش‌ها: دو طرف صفحه قرار بگیرند */
+.navButton {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--accent); /* رنگ اولیه */
+  padding: 0.8rem;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.navButton:hover {
+  background-color:var(--primary);
+  color: var(--light);
+}
+/* progress bar در پایین عکس و روی خود تصویر */
+.progressContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+
+
+.progressBarWrapper {
+  width: 70px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  width: 0%;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+.progressBehindModal {
+  z-index: 1 !important;
+}
+
+.overlayContent1 {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  transform: translateY(-50%);
+  padding: 1.5rem 2rem;
+  color: var(--primary);
+  text-align: right;
+  max-width: 400px;
+  z-index: 7;
+}
+
+
+.overlayContent h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.overlayContent p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ctaButton {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  background-color: transparent;
+  color:var(--light); 
+  border:1px solid #020c6a; 
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+   font-weight: bold;
+}
+
+.ctaButton:hover {
+  border-color: #f99a10;
+  color:var(--light);  
+}
+
+
+.overlayContent2 {
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  transform: translateY(-50%);
+  padding: 1.5rem 1.5rem;
+  color: var(--light);
+  text-align: right;
+  max-width: 500px;
+  z-index: 7;
+}
+
+
+.overlayContent2 h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.overlayContent2 p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight:bold;
+}
+
+
+.ctaButtonAlt {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  justify-content: center;
+  font-size: large;
+  background-color: transparent;
+  color:var(--primary); 
+  border:2px solid #f99a10; 
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.ctaButtonAlt:hover {
+  border-color: #f99a10;
+  color:var(--light);  
+}
+@media (max-width: 768px) {
+  .sliderContainer {
+    height: 50vh; /* کاهش ارتفاع برای موبایل */
+  }
+
+  .overlayContent1, .overlayContent2 {
+    padding: 1rem;
+    max-width: 90%; /* افزایش عرض برای موبایل */
+    text-align: center; /* متن وسط‌چین */
+  }
+
+  .ctaButton, .ctaButtonAlt {
+    width: 100%; /* دکمه‌ها را به‌صورت تمام عرض برای موبایل */
+  }
+}

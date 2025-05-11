@@ -1,0 +1,364 @@
+
+
+.navbar {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 8rem;
+  direction: rtl;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.languageSearchWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:1rem;
+  order: 1;
+}
+
+.searchButton {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.searchButton:hover {
+  color: var(--accent); 
+}
+
+
+.navListWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  order: 2;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navList li {
+
+  cursor: pointer;
+  font-size: 1rem;
+}
+.navList li a,
+.menuItem {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--light);
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.navList li a:hover::after,
+.menuItem:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  animation: underlineIn 0.4s forwards;
+  transform: translateX(-50%);
+}
+
+@keyframes underlineIn {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+li.active a {
+  font-weight: bold;
+  color: var(--accent) !important;
+
+}
+
+.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;  
+  border-right: 5px solid transparent;
+  border-bottom: 6px solid var(--light); 
+  margin-left: 0.5rem;
+  margin-right: 0.3rem;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+/* انیمیشن چرخش فلش */
+.rotate {
+  transform: rotate(180deg); 
+  border-bottom-color: var(--accent); 
+}
+
+.arrow:hover {
+  border-bottom-color: var(--accent); 
+  transform: scale(1.1);  
+}
+
+
+
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  order: 3;
+}
+
+.menuButtonWrapper {
+  display: none;
+  order: 4;
+}
+
+
+/* نوار افقی ساب‌منو */
+.fullWidthSubmenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw; 
+  background-color: var(--accent);
+  z-index: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 2rem;
+}
+
+
+.fullWidthSubmenu ul {
+  display: flex;
+  gap: 2rem; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.fullWidthSubmenu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.fullWidthSubmenu li a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight:bold;
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+.fullWidthSubmenu li a:hover {
+  color: var(--light);
+  font-weight:600px;
+}
+
+/* ایجاد انیمیشن روی ساب‌منو */
+.fullWidthSubmenu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.fullWidthSubmenu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.fullWidthSubmenu-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fullWidthSubmenu-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.navItemWithSub {
+  position: relative;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.socialIcons a {
+  color: var(--light); 
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #f4c300; 
+}
+
+
+/* --------- Responsive Styles --------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .logoWrapper {
+    order: 0; 
+    margin-bottom: 1rem;
+  }
+  
+  .navList li a,
+.menuItem {
+  font-size: 0.9rem; 
+}
+
+
+  .languageSearchWrapper {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .navListWrapper {
+    width: 100%;
+    flex-direction: column;
+    order: 2;
+  }
+
+  .navList {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    align-items:flex-start; 
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+
+  .navList.open {
+    display: flex;
+  }
+
+  .navList li {
+    text-align: center;
+  }
+
+  .menuButtonWrapper {
+    display: block;
+  }
+
+  .menuButton {
+    background: transparent;
+    border: 1px solid var(--primary);
+    padding: 10px;
+    font-size: 20px;
+    color: var(--primary);
+  }
+
+  .menuButton.open {
+    background-color: var(--accent);
+    color: var(--light);
+  }
+
+  .fullWidthSubmenu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    padding: 0.5rem 1rem;
+  }
+  
+
+  .fullWidthSubmenu ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .socialIcons {
+    gap: 8px;
+    font-size: 1rem; 
+    margin: 0 0.25rem;
+  }
+ 
+  .submenu {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background-color: var(--light);
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    min-width: 140px;
+    padding: 0.5rem;
+  }
+
+
+  .submenu.open {
+    display: flex;
+  }
+
+  .navListItemWithSubmenu {
+    position: relative;
+  }
+
+  .submenu a {
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-align: right;
+    padding: 0.25rem 0.5rem;
+
+  }
+  .submenu a:hover {
+    color: var(--accent);
+  }
+}
+
+@media (max-width: 480px) {
+  .menuButton {
+    padding: 8px;
+    font-size: 18px;
+  }
+
+  .searchButton {
+    font-size: 18px;
+  }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

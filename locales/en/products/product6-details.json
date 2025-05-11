@@ -1,0 +1,23 @@
+ {
+    "slug": "bulk-cement",
+    "title": "Bulk Cement Tanker",
+    "banner": "/images/bulk-cement-tanker-banner.webp",
+    "motivation": "Safe and fast transportation of bulk cement",
+    "infoImage": "/images/bulk-cement-info-image.webp",
+    "infoTitle": "Special Tanker for Bulk Cement Transport",
+    "infoText": "The bulk cement tanker is designed for transporting powder materials like cement. Equipped with a pneumatic discharge system, it enables clean and easy unloading.",
+    "items": [
+      {
+        "slug": "bulk-cement-a",
+        "name": "Model A",
+        "shortDesc": "35,000-liter tank with dual pneumatic outlets",
+        "image": "/images/bulk-cement-a.webp"
+      },
+      {
+        "slug": "bulk-cement-b",
+        "name": "Model B",
+        "shortDesc": "Built-in compressor with fast discharge system",
+        "image": "/images/bulk-cement-b.webp"
+      }
+    ]
+  }

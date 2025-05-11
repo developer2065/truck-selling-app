@@ -1,0 +1,1 @@
+export type LocaleTypes = 'fa' | 'en' | 'ar';

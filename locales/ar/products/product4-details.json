@@ -1,0 +1,24 @@
+ {
+    "slug": "مقطورة بغلدار",
+    "title": "مقطورة بغلدار",
+    "banner": "/images/sidewall-trailer-banner.webp",
+    "motivation": "نقل الحمولات الكبيرة والمحافظة عليها بأمان",
+    "infoImage": "/images/sidewall-info-image.webp",
+    "infoTitle": "نقل الحمولات الكبيرة بمقطورة بغلدار",
+    "infoText": "مقطورة بغلدار مثالية لنقل الحمولات الكبيرة، والأشياء التي تحتاج إلى حماية من الظروف الجوية. الجدران الجانبية توفر حماية إضافية للبضائع.",
+    "items": [
+      {
+        "slug": "aمقطورة بغلدار",
+        "name": "النموذج A",
+        "shortDesc": "لنقل البضائع على شكل باليت كبير",
+        "image": "/images/sidewall-trailer-a.webp"
+      },
+      {
+        "slug":"bمقطورة بغلدار",
+        "name": "النموذج B",
+        "shortDesc": "لنقل الأشياء التي تحتاج إلى حماية إضافية",
+        "image": "/images/sidewall-trailer-b.webp"
+      }
+    ]
+  }
+

@@ -1,0 +1,82 @@
+
+
+.sidebar {
+  position: fixed;
+  top: 180px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 1000;
+}
+
+.sidebarButton {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 51, 102, 0.7); /* سورمه‌ای شفاف */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  text-decoration: none; 
+  transition: width 0.3s ease, background-color 0.3s ease;
+  backdrop-filter: blur(5px); /* افکت بلور پشت دکمه */
+}
+
+.icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  margin-left: 15px;
+  opacity: 0.8;
+}
+
+
+.sidebarButton:hover .icon {
+  transform: scale(1.1);
+  opacity: 1;
+  color: var(--accent);
+}
+
+.sidebarButton span {
+  margin-left: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 16px;
+}
+
+.sidebarButton:hover {
+  width: 180px;
+  background-color: rgba(0, 51, 102, 0.9); 
+}
+
+
+.sidebarButton:hover span {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ریسپانسیو موبایل */
+@media (max-width: 768px) {
+  .sidebar {
+    top: 80px;
+  }
+
+  .sidebarButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sidebarButton:hover {
+    width: 150px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}

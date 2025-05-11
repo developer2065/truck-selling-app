@@ -1,0 +1,23 @@
+ {
+    "slug": "flatbed-trailer",
+    "title": "Flatbed Trailer",
+    "banner": "/images/flatbed-trailer-banner.webp",
+    "motivation": "Transport heavy and large loads with high durability",
+    "infoImage": "/images/flatbed-info-image.webp",
+    "infoTitle": "Transport heavy loads with Flatbed Trailer",
+    "infoText": "The flatbed trailer is suitable for transporting various heavy, large, and bulky loads, especially construction materials and industrial machinery.",
+    "items": [
+      {
+        "slug": "flatbed-trailer-a",
+        "name": "Model A",
+        "shortDesc": "For transporting heavy construction loads",
+        "image": "/images/flatbed-trailer-a.webp"
+      },
+      {
+        "slug": "flatbed-trailer-b",
+        "name": "Model B",
+        "shortDesc": "For transporting industrial machinery",
+        "image": "/images/flatbed-trailer-b.webp"
+      }
+    ]
+  }

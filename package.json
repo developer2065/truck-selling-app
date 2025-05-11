@@ -3,25 +3,50 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env NEXT_JS_EXPERIMENTAL_TURBO=false next dev",
+    "build": "cross-env NEXT_JS_EXPERIMENTAL_TURBO=false next build",
+    "start": "cross-env NEXT_JS_EXPERIMENTAL_TURBO=false next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/vazirmatn": "^5.2.5",
+    "@next/font": "^14.2.15",
+    "bootstrap": "^5.3.3",
+    "cross-env": "^7.0.3",
+    "cross-spawn": "^7.0.6",
+    "framer-motion": "^12.6.3",
+    "glob": "^11.0.1",
+    "gsap": "^3.12.7",
+    "i18next": "^24.2.3",
+    "i18next-browser-languagedetector": "^8.0.4",
+    "i18next-http-backend": "^3.0.2",
+    "i18next-resources-to-backend": "^1.2.1",
+    "lucide-react": "^0.488.0",
+    "next": "^15.3.2",
+    "next-i18next": "^15.4.2",
+    "next-intl": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "react-i18next": "^15.5.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.4.1",
+    "react-slick": "^0.30.3",
+    "rimraf": "^6.0.1",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "autoprefixer": "^10.4.21",
+    "daisyui": "^5.0.9",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.17",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,23 @@
+ {
+     "slug": "tanker-trailer",
+    "title": "Tanker Trailer",
+    "banner": "/images/tanker-trailer-banner.webp",
+    "motivation": "Safe and fast liquid transport",
+    "infoImage": "/images/image1.webp",
+    "infoTitle": "Safe transport of industrial and chemical liquids",
+    "infoText": "The tanker trailer is designed for transporting liquids including fuel, water, and chemicals.",
+    "items": [
+      {
+        "slug": "tanker-trailer-a",
+        "name": "Model A",
+        "shortDesc": "For fuel transport",
+        "image": "/images/tanker-trailer-a.webp"
+      },
+      {
+        "slug": "tanker-trailer-b",
+        "name": "Model B",
+        "shortDesc": "Ideal for chemical transport",
+        "image": "/images/tanker-trailer-b.webp"
+      }
+    ]
+  }
