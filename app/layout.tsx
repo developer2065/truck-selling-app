@@ -1,11 +1,11 @@
-
+import React from 'react';
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Header/Navbar'
 import Sidebar from '@/components/Sidebar'
 import '@/Styles/global.css'
 import { ReactNode } from 'react';
-import { dir } from 'i18next'; // برای تنظیم جهت صفحه (راست به چپ یا چپ به راست)
-import LocaleClientWrapper from '@/components/LocaleClientWrapper'; // wrapper برای تنظیم زبان
+import { dir } from 'i18next'; 
+import LocaleClientWrapper from '@/components/LocaleClientWrapper'; 
 
 export const metadata = {
   title: 'وبسایت فروش کامیون',
