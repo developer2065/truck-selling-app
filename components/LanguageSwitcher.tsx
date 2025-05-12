@@ -12,32 +12,39 @@ const languages = [
 ];
 
 export default function LanguageSwitcher() {
-  const { i18n: i18nextInstance } = useTranslation();
+  const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState<string>('fa');
   const [isClient, setIsClient] = useState(false);
-  const [router, setRouter] = useState(null);  // Adding state for router
+  const [router, setRouter] = useState<any>(null);  // Router state to ensure it's client-side
   const menuRef = useRef<HTMLDivElement>(null);
 
- useEffect(() => {
-    setIsClient(true)
-    if (i18nextInstance.language) {
-      setSelectedLang(i18nextInstance.language)
+  useEffect(() => {
+    setIsClient(true);
+    if (i18n.language) {
+      setSelectedLang(i18n.language);
     }
-  }, [i18nextInstance.language])
+    
+    // Ensure useRouter is only called on the client
+    if (typeof window !== 'undefined') {
+      const routerInstance = useRouter();
+      setRouter(routerInstance);
+    }
+  }, [i18n.language]);
 
   const toggleMenu = () => {
     setOpen((prev) => !prev);
   };
 
   const changeLanguage = (code: string) => {
-    if (router) {
-      i18nextInstance.changeLanguage(code);
-      setSelectedLang(code);
-      setOpen(false);
+    i18n.changeLanguage(code);
+    setSelectedLang(code);
+    setOpen(false);
 
+    // Update the URL to reflect the new language
+    if (router) {
       const currentPath = router.asPath;
-      const pathWithoutLang = currentPath.replace(`/${i18nextInstance.language}`, '');
+      const pathWithoutLang = currentPath.replace(`/${i18n.language}`, '');
       const newPath = `/${code}${pathWithoutLang}`;
 
       router.push(newPath);

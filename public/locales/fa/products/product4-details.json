@@ -1,0 +1,23 @@
+{
+    "slug":  "تریلی بغلدار",
+    "title": "تریلی بغلدار",
+    "banner": "/images/sidewall-trailer-banner.webp",
+    "motivation": "حمل بارهای حجیم و با امنیت بالا",
+    "infoImage": "/images/sidewall-info-image.webp",
+    "infoTitle": "حمل بارهای حجیم با تریلی بغلدار",
+    "infoText": "تریلی بغلدار برای حمل بارهای حجیم، پالت‌های بزرگ و اقلامی که نیاز به حفاظت در برابر تغییرات جوی دارند، مناسب است. دیواره‌های کناری این تریلی به محافظت از بار کمک می‌کنند.",
+    "items": [
+      {
+        "slug":  "آ تریلی بغلدار",
+        "name": "مدل A",
+        "shortDesc": "مناسب برای حمل بارهای پالت بزرگ",
+        "image": "/images/sidewall-trailer-a.webp"
+      },
+      {
+        "slug":  " ب تریلی بغلدار",
+        "name": "مدل B",
+        "shortDesc": "مناسب برای حمل اقلام نیازمند محافظت بیشتر",
+        "image": "/images/sidewall-trailer-b.webp"
+      }
+    ]
+  }

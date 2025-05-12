@@ -1,38 +1,34 @@
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@/Styles/global.css';
-import '@fontsource/vazirmatn';
-import Navbar from '@/components/Header/Navbar';
-import Footer from '@/components/Footer/Footer';
-import Sidebar from '@/components/Sidebar';
-import { LocaleTypes } from '@/types/i18n-types';
+import Footer from '@/components/Footer/Footer'
+import Navbar from '@/components/Header/Navbar'
+import Sidebar from '@/components/Sidebar'
+import '@/Styles/global.css'
+import { ReactNode } from 'react';
+import { dir } from 'i18next'; // برای تنظیم جهت صفحه (راست به چپ یا چپ به راست)
+import LocaleClientWrapper from '@/components/LocaleClientWrapper'; // wrapper برای تنظیم زبان
 
-
-type Props = {
-  children: React.ReactNode;
-  params: {
-    locale: LocaleTypes;
-  };
-};
-
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-
-  // تنظیمات متادیتا براساس زبان
-  return {
-    title: locale === 'fa' ? 'تندرتابان نصف جهان' : locale === 'en' ? 'Your Site Title' : 'عنوان سایت',
-    description: locale === 'fa' ? 'توضیحات سایت به فارسی' : locale === 'en' ? 'Site description in English' : 'وصف الموقع باللغة العربية',
-  };
+export const metadata = {
+  title: 'وبسایت فروش کامیون',
+  description: 'سایت چندزبانه فروش کامیون و تریلی',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: { locale: string };
+}) {
   return (
-    <html dir='rtl' lang='fa'> 
+    <html lang={params.locale} dir={dir(params.locale)}>
       <body>
-        <Navbar />
-        <Sidebar />
-        {children}
-        <Footer />
+        <LocaleClientWrapper locale={params.locale}>
+            <Navbar />
+            <Sidebar />
+          {children}
+          <Footer />
+        </LocaleClientWrapper>
       </body>
     </html>
   );

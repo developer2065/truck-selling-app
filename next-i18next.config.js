@@ -1,12 +1,9 @@
-/** @type {import('next-i18next').UserConfig} */
-const nextI18NextConfig = {
+// next-i18next.config.js
+module.exports = {
   i18n: {
     defaultLocale: 'fa',
-    locales: ['fa', 'ar', 'en'],
+    locales: ['fa', 'en', 'ar'],
     localeDetection: true,
   },
-  localePath: './public/locales',
-  reloadOnPrerender: true,
+  localePath: './locales',
 };
-
-module.exports = nextI18NextConfig;

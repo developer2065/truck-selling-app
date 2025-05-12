@@ -1,0 +1,24 @@
+ {
+    "slug": "container-trailer",
+    "title": "Container Trailer",
+    "banner": "/images/products/container/banner.jpg",
+    "motivation": "Secure and durable container transport – ideal for sea and land freight.",
+    "infoImage": "/images/products/container/info.jpg",
+    "infoTitle": "Suitable for All Container Types",
+    "infoText": "Container trailers are engineered to carry 20ft and 40ft containers with reinforced chassis for extended lifespan and low maintenance. A reliable choice for professional logistics companies.",
+    "items": [
+      {
+        "slug": "20ft-container",
+        "name": "20ft Container Trailer",
+        "shortDesc": "Ideal for transporting 20ft containers with high safety and balance.",
+        "image": "/images/products/container/20ft.jpg"
+      },
+      {
+        "slug": "40ft-container",
+        "name": "40ft Container Trailer",
+        "shortDesc": "Engineered for secure 40ft container hauling over long distances.",
+        "image": "/images/products/container/40ft.jpg"
+      }
+    ]
+  }
+

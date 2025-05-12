@@ -1,0 +1,23 @@
+ {
+    "slug": "تریلی تانکری",
+    "title": "تریلی تانکری",
+    "banner": "/images/tanker-trailer-banner.webp",
+    "motivation": "حمل ایمن و سریع مایعات",
+    "infoImage": "/images/image1.webp",
+    "infoTitle": "انتقال ایمن مایعات صنعتی و شیمیایی",
+    "infoText": "تریلی تانکری برای حمل مایعات از جمله سوخت، آب و مواد شیمیایی طراحی شده است.",
+    "items": [
+      {
+        "slug": " آتریلی تانکری",
+        "name": "مدل A",
+        "shortDesc": "برای حمل سوخت",
+        "image": "/images/tanker-trailer-a.webp"
+      },
+      {
+        "slug": " ب تریلی تانکری",
+        "name": "مدل B",
+        "shortDesc": "مناسب برای حمل مواد شیمیایی",
+        "image": "/images/tanker-trailer-b.webp"
+      }
+    ]
+  }

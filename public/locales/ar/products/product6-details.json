@@ -1,0 +1,23 @@
+ {
+    "slug": "مقطورة صهريج أسمنت سائبة",
+    "title": "مقطورة صهريج أسمنت سائبة",
+    "banner": "/images/bulk-cement-tanker-banner.webp",
+    "motivation": "نقل آمن وسريع للأسمنت السائب",
+    "infoImage": "/images/bulk-cement-info-image.webp",
+    "infoTitle": "صهريج خاص لنقل الأسمنت السائب",
+    "infoText": "تم تصميم مقطورة صهريج الأسمنت السائب لنقل المواد البودرة مثل الأسمنت. بفضل نظام التفريغ الهوائي، يمكن التفريغ بسهولة ودون تلوث.",
+    "items": [
+      {
+        "slug": "a مقطورة صهريج أسمنت سائبة",
+        "name": "النموذج A",
+        "shortDesc": "خزان سعة ٣٥٠٠٠ لتر مع مخرجي تفريغ هوائي",
+        "image": "/images/bulk-cement-a.webp"
+      },
+      {
+        "slug": " b مقطورة صهريج أسمنت سائبة",
+        "name": "النموذج B",
+        "shortDesc": "مزود بكمبروسر داخلي وتفريغ سريع",
+        "image": "/images/bulk-cement-b.webp"
+      }
+    ]
+  }

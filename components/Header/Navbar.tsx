@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import React, { useState, useEffect, useRef } from 'react'
 import LanguageSwitcher from '../LanguageSwitcher'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import styles from '@/Styles/Navbar.module.css'
 import {
   FaTelegramPlane,
@@ -205,7 +205,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locales}/products/lowbed`}>{t('product8')}</Link>
+                <Link href={`/${locale}/products/lowbed`}>{t('product8')}</Link>
               </li>
             </ul>
           </div>
