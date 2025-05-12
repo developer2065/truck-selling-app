@@ -1,75 +1,101 @@
-'use client'
-import { FaBars, FaSearch } from 'react-icons/fa'
-import Image from 'next/image'
-import gsap from 'gsap'
-import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
-import React, { useState, useEffect, useRef } from 'react'
-import LanguageSwitcher from '../LanguageSwitcher'
-import { usePathname } from 'next/navigation'
-import styles from '@/Styles/Navbar.module.css'
+"use client";
+import { FaBars, FaSearch } from "react-icons/fa";
+import Image from "next/image";
+import gsap from "gsap";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import React, { useState, useEffect, useRef } from "react";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { usePathname } from "next/navigation";
+import styles from "@/Styles/Navbar.module.css";
 import {
   FaTelegramPlane,
   FaWhatsapp,
   FaInstagram,
   FaYoutube,
-} from 'react-icons/fa'
-import SearchModal from '../SearchModal'
+} from "react-icons/fa";
+import SearchModal from "../SearchModal";
 
 const Navbar = () => {
- const { t, i18n } = useTranslation('navbar')
-  const pathname = usePathname()
-  const locale = i18n.language
+  const { t, i18n } = useTranslation("navbar");
+  const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [showSearch, setShowSearch] = useState(false);
 
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [activeMenu, setActiveMenu] = useState<string | null>(null)
-  const [showSearch, setShowSearch] = useState(false)
+  const menuTimeoutRef = useRef(null);
+  const navRef = useRef(null);
 
-  const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const navRef = useRef<HTMLDivElement>(null)
+  // تشخیص محیط کلاینت
+  useEffect(() => {
+    setIsClient(true);
+    // اجبار به به‌روزرسانی زبان بر اساس URL
+    const urlPath = window.location.pathname;
+    const langFromUrl = urlPath.split("/")[1]; // اولین بخش پس از /
+
+    if (langFromUrl && ["fa", "en", "ar"].includes(langFromUrl)) {
+      i18n.changeLanguage(langFromUrl);
+    }
+  }, []);
+
+  // تشخیص زبان فعلی
+  const locale = isClient ? i18n.language : "fa";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    if (!isClient) return;
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev)
-  const isActive = (path: string) => pathname === path
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isClient]);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const isActive = (path) => pathname === path;
 
   useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
+    if (!isClient) return;
+    setMenuOpen(false);
+  }, [pathname, isClient]);
 
-  const handleMouseEnter = (menu: string) => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current)
-    setActiveMenu(menu)
-  }
+  const handleMouseEnter = (menu) => {
+    if (!isClient) return;
+    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+    setActiveMenu(menu);
+  };
 
   const handleMouseLeaveWithDelay = () => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current)
+    if (!isClient) return;
+    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
     menuTimeoutRef.current = setTimeout(() => {
-      setActiveMenu(null)
-    }, 150)
-  }
+      setActiveMenu(null);
+    }, 150);
+  };
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setActiveMenu(null)
+    if (!isClient) return;
+
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveMenu(null);
       }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
+    };
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isClient]);
+
+  // نمایش کامپوننت خالی در سمت سرور برای جلوگیری از خطای hydration
+  if (!isClient) {
+    return <nav className={styles.navbar}></nav>;
+  }
 
   return (
     <nav
       ref={navRef}
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
     >
       <div className={styles.languageSearchWrapper}>
         <LanguageSwitcher />
@@ -112,22 +138,27 @@ const Navbar = () => {
       </div>
 
       <div className={styles.navListWrapper}>
-        <ul className={`${styles.navList} ${menuOpen ? styles.open : ''}`}>
-          <li className={isActive(`/${locale}`) ? styles.active : ''}>
-            <Link href={`/${locale}`}>{t('home')}</Link>
+        <ul
+          className={`${styles.navList} ${
+            isClient && menuOpen ? styles.open : ""
+          }`}
+          suppressHydrationWarning
+        >
+          <li className={isActive(`/${locale}`) ? styles.active : ""}>
+            <Link href={`/${locale}`}>{t("home")}</Link>
           </li>
 
           <li
             className={`${styles.dropdown} ${styles.navItemWithSub}`}
-            onMouseEnter={() => handleMouseEnter('products')}
+            onMouseEnter={() => handleMouseEnter("products")}
             onMouseLeave={handleMouseLeaveWithDelay}
           >
             <Link href={`/${locale}/products`}>
               <div className={styles.menuItem}>
-                {t('products')}
+                {t("products")}
                 <span
                   className={`${styles.arrow} ${
-                    activeMenu === 'products' ? styles.rotate : ''
+                    activeMenu === "products" ? styles.rotate : ""
                   }`}
                 />
               </div>
@@ -136,93 +167,113 @@ const Navbar = () => {
 
           <li
             className={`${styles.dropdown} ${styles.navItemWithSub}`}
-            onMouseEnter={() => handleMouseEnter('media')}
+            onMouseEnter={() => handleMouseEnter("media")}
             onMouseLeave={handleMouseLeaveWithDelay}
+            suppressHydrationWarning
           >
-            <Link href={`/${locale}/media`}>
+            <Link href={`/${locale}/media`} suppressHydrationWarning>
               <div className={styles.menuItem}>
-                {t('media')}
+                {isClient ? t("media") : "رسانه"}
                 <span
                   className={`${styles.arrow} ${
-                    activeMenu === 'media' ? styles.rotate : ''
+                    isClient && activeMenu === "media" ? styles.rotate : ""
                   }`}
+                  suppressHydrationWarning
                 />
               </div>
             </Link>
           </li>
 
-          <li className={isActive(`/${locale}/events`) ? styles.active : ''}>
-            <Link href={`/${locale}/events`}>{t('events')}</Link>
+          <li
+            className={isActive(`/${locale}/events`) ? styles.active : ""}
+            suppressHydrationWarning
+          >
+            <Link href={`/${locale}/events`} suppressHydrationWarning>
+              {isClient ? t("events") : "رویدادها"}
+            </Link>
           </li>
 
           <li
-            className={isActive(`/${locale}/technology`) ? styles.active : ''}
+            className={isActive(`/${locale}/technology`) ? styles.active : ""}
+            suppressHydrationWarning
           >
-            <Link href={`/${locale}/technology`}>{t('technology')}</Link>
+            <Link href={`/${locale}/technology`} suppressHydrationWarning>
+              {isClient ? t("technology") : "تکنولوژی"}
+            </Link>
           </li>
 
-          <li className={isActive(`/${locale}/about`) ? styles.active : ''}>
-            <Link href={`/${locale}/about`}>{t('about')}</Link>
+          <li
+            className={isActive(`/${locale}/about`) ? styles.active : ""}
+            suppressHydrationWarning
+          >
+            <Link href={`/${locale}/about`} suppressHydrationWarning>
+              {isClient ? t("about") : "درباره ما"}
+            </Link>
           </li>
 
-          <li className={isActive(`/${locale}/contact`) ? styles.active : ''}>
-            <Link href={`/${locale}/contact`}>{t('contact')}</Link>
+          <li
+            className={isActive(`/${locale}/contact`) ? styles.active : ""}
+            suppressHydrationWarning
+          >
+            <Link href={`/${locale}/contact`} suppressHydrationWarning>
+              {isClient ? t("contact") : "تماس با ما"}
+            </Link>
           </li>
         </ul>
 
-        {activeMenu === 'products' && (
+        {isClient && activeMenu === "products" && (
           <div
             className={styles.fullWidthSubmenu}
-            onMouseEnter={() => handleMouseEnter('products')}
+            onMouseEnter={() => handleMouseEnter("products")}
             onMouseLeave={handleMouseLeaveWithDelay}
           >
             <ul>
               <li>
-                <Link href={`/${locale}/products/tipper`}>{t('product1')}</Link>
+                <Link href={`/${locale}/products/tipper`}>{t("product1")}</Link>
               </li>
               <li>
-                <Link href={`/${locale}/products/tank`}>{t('product2')}</Link>
+                <Link href={`/${locale}/products/tank`}>{t("product2")}</Link>
               </li>
               <li>
                 <Link href={`/${locale}/products/platform`}>
-                  {t('product3')}
+                  {t("product3")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products/sider`}>{t('product4')}</Link>
+                <Link href={`/${locale}/products/sider`}>{t("product4")}</Link>
               </li>
               <li>
                 <Link href={`/${locale}/products/curtain`}>
-                  {t('product5')}
+                  {t("product5")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products/bunki`}>{t('product6')}</Link>
+                <Link href={`/${locale}/products/bunki`}>{t("product6")}</Link>
               </li>
               <li>
                 <Link href={`/${locale}/products/container`}>
-                  {t('product7')}
+                  {t("product7")}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products/lowbed`}>{t('product8')}</Link>
+                <Link href={`/${locale}/products/lowbed`}>{t("product8")}</Link>
               </li>
             </ul>
           </div>
         )}
 
-        {activeMenu === 'media' && (
+        {isClient && activeMenu === "media" && (
           <div
             className={styles.fullWidthSubmenu}
-            onMouseEnter={() => handleMouseEnter('media')}
+            onMouseEnter={() => handleMouseEnter("media")}
             onMouseLeave={handleMouseLeaveWithDelay}
           >
             <ul>
               <li>
-                <Link href={`/${locale}/media/photos`}>{t('media_photo')}</Link>
+                <Link href={`/${locale}/media/photos`}>{t("media_photo")}</Link>
               </li>
               <li>
-                <Link href={`/${locale}/media/videos`}>{t('media_video')}</Link>
+                <Link href={`/${locale}/media/videos`}>{t("media_video")}</Link>
               </li>
             </ul>
           </div>
@@ -237,18 +288,21 @@ const Navbar = () => {
 
       <div className={styles.menuButtonWrapper}>
         <button
-          className={`${styles.menuButton} ${menuOpen ? styles.open : ''}`}
+          className={`${styles.menuButton} ${
+            isClient && menuOpen ? styles.open : ""
+          }`}
           onClick={toggleMenu}
+          suppressHydrationWarning
         >
           <FaBars />
         </button>
       </div>
 
-      {showSearch && (
+      {isClient && showSearch && (
         <SearchModal isOpen={showSearch} onClose={() => setShowSearch(false)} />
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

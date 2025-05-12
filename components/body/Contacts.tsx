@@ -1,6 +1,5 @@
-
-import React from 'react';
-import styles from '@/Styles/Contacts.module.css'; 
+import React from "react";
+import styles from "@/Styles/Contacts.module.css";
 
 const Contacts = () => {
   return (
@@ -18,7 +17,8 @@ const Contacts = () => {
             <span className={styles.label}>ایمیل:</span> example@example.com
           </li>
           <li>
-            <span className={styles.label}>آدرس:</span> اصفهان، خیابان آزادی، پلاک 10
+            <span className={styles.label}>آدرس:</span> اصفهان، خیابان آزادی،
+            پلاک 10
           </li>
         </ul>
       </div>
@@ -28,7 +28,7 @@ const Contacts = () => {
           width="100%"
           height="300"
           style={{ border: 0 }}
-          allowFullScreen=""
+          // allowFullScreen=""
           loading="lazy"
         ></iframe>
       </div>
